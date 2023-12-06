@@ -34,6 +34,7 @@ jobs:
           #docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest .
           #docker push ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest
           docker buildx build -t shulinz/clcm3404image:latest .
+          docker images
           docker push shulinz/clcm3404image:latest
 
       - name: Logout from Docker Hub
