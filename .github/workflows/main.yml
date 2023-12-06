@@ -40,3 +40,24 @@ jobs:
 
       - name: Logout from Docker Hub
         run: docker logout
+      - name: Deploy to EC2 server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo yum -y update
+            sudo yum install docker
+            sudo systemctl start docker
+            docker pull shulinz/clcm3404image:latest
+            docker run -d -p 5555:80 --name clcm3404test shulinz/clcm3404image:latest
+  
