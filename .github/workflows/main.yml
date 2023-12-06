@@ -39,13 +39,5 @@ jobs:
 
       - name: Logout from Docker Hub
         run: docker logout
-      - name: Deploy to EC2 server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
-
-      
+ 
   
