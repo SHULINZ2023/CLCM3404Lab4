@@ -31,8 +31,10 @@ jobs:
         run: |
           docker buildx create --use
           docker buildx inspect --bootstrap
-          docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest
+          #docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest .
+          #docker push ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest
+          docker buildx build -t shulinz/clcm3404image:latest .
+          docker push shulinz/clcm3404image:latest
 
       - name: Logout from Docker Hub
         run: docker logout
