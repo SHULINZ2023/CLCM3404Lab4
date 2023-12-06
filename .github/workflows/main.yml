@@ -58,6 +58,6 @@ jobs:
             sudo yum -y update
             sudo yum install docker
             sudo systemctl start docker
-            docker pull shulinz/clcm3404image:latest
-            docker run -d -p 5555:80 --name clcm3404test shulinz/clcm3404image:latest
+            sudo docker pull shulinz/clcm3404image:latest
+            sudo docker run -d -p 5555:80 --name clcm3404test shulinz/clcm3404image:latest
   
