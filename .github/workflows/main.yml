@@ -33,10 +33,10 @@ jobs:
           docker buildx inspect --bootstrap
           #docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest .
           #docker push ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest
-          docker build -t clcm3404image .
-          docker tag clcm3404image:latest shulinz/clcm3404image:latest
+          docker build -t clcm3404image --platform linux/arm64 .
+          docker tag clcm3404image:arm64 shulinz/clcm3404image:arm64
           docker images
-          docker push shulinz/clcm3404image:latest
+          docker push shulinz/clcm3404image:arm64
 
       - name: Logout from Docker Hub
         run: docker logout
@@ -58,6 +58,6 @@ jobs:
             sudo yum -y update
             sudo yum install docker
             sudo systemctl start docker
-            sudo docker pull shulinz/clcm3404image:latest
+            sudo docker pull shulinz/clcm3404image:arm64
             sudo docker run -d -p 5555:80 --name clcm3404test shulinz/clcm3404image:latest
   
