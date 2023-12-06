@@ -1,0 +1,7 @@
+# Exclude these files and folders
+node_modules
+.git
+.vscode
+.dockerignore
+*.log
+
