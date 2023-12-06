@@ -2,7 +2,7 @@
 FROM httpd:latest
 
 # Copy all files from the current directory to the web server document root
-COPY . /var/www/html/
+COPY . /usr/local/apache2/htdocs/
 
 # Expose port 80 for incoming traffic
 EXPOSE 80
