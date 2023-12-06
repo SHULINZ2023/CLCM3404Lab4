@@ -47,14 +47,5 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            # docker pull shulinz/clcm3404image:latest
-            # docker run -d -p 5555:80 shulinz/clcm3404image:latest
-            echo "run successfully"
+      
   
