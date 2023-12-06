@@ -35,7 +35,6 @@ jobs:
           #docker push ${{ secrets.DOCKER_USERNAME }}/clcm3404image:latest
           docker build -t clcm3404image --platform linux/arm64 .
           docker tag clcm3404image:latest shulinz/clcm3404image:latest
-          docker images
           docker push shulinz/clcm3404image:latest
 
       - name: Logout from Docker Hub
@@ -55,9 +54,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo yum -y update
-            sudo yum install docker
-            sudo systemctl start docker
             sudo docker pull shulinz/clcm3404image:latest
-            sudo docker run -d -p 5555:80 --name clcm3404test shulinz/clcm3404image:latest
+            sudo docker run -d -p 5555:80 shulinz/clcm3404image:latest
   
