@@ -56,3 +56,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull shulinz/clcm3404image:latest
+            docker run -d -p 5555:80 shulinz/clcm3404image:latest
